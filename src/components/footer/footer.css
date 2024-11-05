@@ -1,0 +1,36 @@
+.footer {
+    padding: 2rem 0;
+}
+
+/* .footer-content {
+    margin: 0 auto;
+    padding: 0 1rem;
+  } */
+
+  .footer-left h3 {
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+  }
+
+  .footer-left p {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .social-icons a {
+    color: var(--secondary-color);
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .footer-divider {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 0 0 1rem;
+  }
+
+  .footer-bottom p {
+    color: var(--secondary-color);
+    /* margin: 0; */
+    margin-left: 6rem;
+  }

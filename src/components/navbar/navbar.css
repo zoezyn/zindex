@@ -1,0 +1,141 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    border-bottom: 1px solid #E5E7EB;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--background-color);
+  }
+
+.navbar-logo {
+display: flex;
+align-items: center;
+}
+
+.navbar-logo img {
+width: 30px;  /* Adjust this value to make the logo smaller or larger */
+height: auto;  /* Maintain aspect ratio */
+margin-right: 0.5em;  /* Space between logo and text */
+/* align-items: center; */
+}
+
+.navbar-logo a {
+font-size: 20px;
+font-weight: bold;
+color: var(--text-color);
+text-decoration: none;
+/* align-items: center; */
+}
+
+.navbar-links {
+display: flex;
+flex-direction: row;
+}
+
+
+/* render links in navbar */
+.navbar-links a {
+margin-right: 1.5em;
+color: var(--text-color);
+text-decoration: none;
+font-size: 16px;
+}
+
+
+.btn {
+/* margin-left: 10px; */
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+}
+
+.btn-primary {
+background-color: var(--primary-color);
+color: var(--background-color);
+}
+
+.btn-secondary {
+background-color: var(--background-color);
+color: var(--text-color);
+/* border: 1px solid var(--text-color); */
+}
+
+.navbar-menu {
+display: none;
+margin-left: 1em;
+position: relative;
+}
+
+/* .navbar-menu svg {
+cursor: pointer;
+} */
+
+.navbar-menu-container {
+display: flex;
+justify-content: flex-end;
+align-items: flex-end;
+flex-direction: column;
+text-align: end;
+background-color: #aadac5;
+/* padding:  1rem ; */
+padding-right: 1.5rem;
+position: absolute;
+top: 30px;
+right: 0;
+margin-top: 1rem;
+min-width: 150px;
+border-radius: 5px;
+box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
+}
+
+.navbar-menu-container-links {
+display: flex;
+margin: 0.75rem 0;
+flex-direction: column;
+}
+
+.navbar-menu-container-links a {
+color: var(--text-color);
+text-decoration: none;
+font-size: 14px;
+margin: 0.5rem 0;
+}
+
+.navbar-menu-container-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0 0 1rem 0;
+}
+
+.navbar-menu-container-buttons button {
+    padding: 0.5rem ;
+    /* color: #7c25b6;
+    background: #589dc2; */
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1050px) {
+  .navbar-links {
+    display: none;
+  }
+  .navbar-buttons {
+    display: none;
+  }
+  .navbar-menu {
+    display: flex;
+  }
+}
+  

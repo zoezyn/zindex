@@ -1,0 +1,46 @@
+.book-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 6rem;
+    gap: 1rem;
+}
+
+.book-page button {
+    /* border: none; */
+    /* background: none; */
+    margin-left:auto;
+}
+
+.book-cover-container {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.book-cover-container img {
+    height: 100px;
+    /* height: auto; */
+}
+
+.text-container {
+    line-height: 3; /* Increases space between lines */
+    margin-bottom: 1.5rem; /* Space between paragraphs */
+    
+}
+
+.notes-list-item {
+    border-bottom: 1px solid #c0c0c0; /* Adds a line between sentences */
+    padding-bottom: 0.5rem; /* Space below each sentence */
+    
+}
+
+@media (max-width: 768px) {
+    .book-cover-container h2 {
+        font-size: 1rem;
+    }
+}
