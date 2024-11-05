@@ -60,7 +60,7 @@ export const SuccessPage = () => {
         })
 
         // 2. Process with Python backend
-        const response = await fetch(`${API_URL}/process-notes`, {
+        const response = await fetch("https://zindex-zyn-f2d542a6b32e.herokuapp.com/process-notes", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
