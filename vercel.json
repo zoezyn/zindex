@@ -1,11 +1,6 @@
 {
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/index.html" }
-    ],
-    "routes": [
-      {
-        "src": "/success(.*)",
-        "dest": "/index.html"
-      }
-    ]
-  }
+  "rewrites": [
+    { "source": "/success/:path*", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+} 
