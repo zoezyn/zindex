@@ -20,7 +20,7 @@ export const Login = () => {
       }
     });
 
-    // Listen for auth state changes
+    // Listen for auth state changess
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       switch (event) {
         case 'SIGNED_IN':
