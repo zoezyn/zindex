@@ -21,7 +21,7 @@
 
 // export default App
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import { Navbar } from './components/navbar/navbar';
 import { Navbar } from './components';
 import {HomePage} from './pages/HomePage';
@@ -33,7 +33,7 @@ import { BookPage } from './pages/Bookpage/BookPage'
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="app">
         <Navbar />
         <Routes>
@@ -45,7 +45,7 @@ const App: React.FC = () => {
         </Routes>
         
       </div>
-    </Router>
+    </BrowserRouter>
   );
 };
 
