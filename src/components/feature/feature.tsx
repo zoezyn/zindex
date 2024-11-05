@@ -1,7 +1,6 @@
 import React from 'react';
 import './feature.css';
 import { kindleImage, laptopImage, fileExplorerImage } from './imports';
-
 export const Feature: React.FC = () => {
   return (
     <div className="feature">

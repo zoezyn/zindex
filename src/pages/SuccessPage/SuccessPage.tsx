@@ -1,16 +1,14 @@
-import { Auth } from '@supabase/auth-ui-react'
-import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { supabase } from '../../lib/supabaseClient'
 import './SuccessPage.css'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { Session, User } from '@supabase/supabase-js'
+import { User } from '@supabase/supabase-js'
 import BookCard from '../../components/bookcard/bookcard'
 
 export const SuccessPage = () => {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
-  const [fileContent, setFileContent] = useState<string>('')
+  // const [fileContent, setFileContent] = useState<string>('')
   const [userNotes, setUserNotes] = useState<any[]>([])  // Add this
   const navigate = useNavigate()
 
@@ -40,10 +38,6 @@ export const SuccessPage = () => {
   }
 
 
-  async function signOut() {
-    await supabase.auth.signOut() // Wait for this to complete
-    navigate('/') // Only runs after sign-out is done
-  }
 
 
   const uploadFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,7 +85,7 @@ export const SuccessPage = () => {
         for (const [bookTitle, notes] of Object.entries(processedData)) {
             console.log(bookTitle)
             // console.log(notes)
-            const { data, error } = await supabase
+            const { error } = await supabase
                 .from('book_notes')
                 .insert({ 
                     user_id: user.id,
