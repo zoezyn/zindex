@@ -5,11 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base:"./",
   plugins: [react()],
-  server: {
-    port: 3000,
-    // Optional: Automatically open browser on server start
-    open: true,
-    // Optional: If port 3000 is taken, don't try another port
-    strictPort: true
-  }
+  // server: {
+  //   port: 3000,
+  //   // Optional: Automatically open browser on server start
+  //   open: true,
+  //   // Optional: If port 3000 is taken, don't try another port
+  //   strictPort: true
+  // }
 })
