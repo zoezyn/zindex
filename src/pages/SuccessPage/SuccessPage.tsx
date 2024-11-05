@@ -11,6 +11,8 @@ export const SuccessPage = () => {
   // const [fileContent, setFileContent] = useState<string>('')
   const [userNotes, setUserNotes] = useState<any[]>([])  // Add this
   const navigate = useNavigate()
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -58,7 +60,7 @@ export const SuccessPage = () => {
         })
 
         // 2. Process with Python backend
-        const response = await fetch('http://localhost:8000/process-notes', {
+        const response = await fetch(`${API_URL}/process-notes`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
