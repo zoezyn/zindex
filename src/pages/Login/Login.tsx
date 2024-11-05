@@ -3,8 +3,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { supabase } from '../../lib/supabaseClient'
 import './Login.css'
 import { useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import { Session } from '@supabase/supabase-js'
+import { useEffect } from 'react'
 
 
 export const Login = () => {
