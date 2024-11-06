@@ -30,4 +30,82 @@
 }
 
 
+.file-upload-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .hidden-input {
+    display: none; /* Hide the default input */
+  }
 
+  .upload-btn:hover {
+    background-color: #027953;
+  }
+  .choose-file-btn:hover {
+    background-color: #eae8e8;
+  }
+  /* Optional: Style for the filename display */
+  .file-name {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  /* If you're using Font Awesome icons */
+  .fas {
+    margin-right: 8px;
+  }
+
+  .delete-btn {
+    /* background-color: #038E63; */
+    /* color: #fff; */
+    background-color: #d3ebe0;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .delete-btn:hover {
+    background-color: #b6d0c4;
+  }
+  .actions-bar {
+    width: 100%;
+    /* padding: 10px; */
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .delete-all-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .delete-all-btn:hover {
+    background: #c82333;
+  }
+  
+  .delete-all-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 768px) {
+    .success-page {
+        padding: 2rem;
+    }
+    .book-card-container {
+        width: 80%;
+    }
+    .actions-bar{
+        justify-content: center;
+    }
+  }

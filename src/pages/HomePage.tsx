@@ -5,7 +5,9 @@ export const HomePage: React.FC = () => {
   return (
     <div className="home-page">
       <Header />
-      <Feature />
+      <div id="how-it-works">
+        <Feature />
+      </div>
       <Footer />
     </div>
   );

@@ -32,3 +32,70 @@
     color: #666;
     margin-left: auto; 
 }
+
+
+
+
+/* Responsive styles */
+@media (max-width: 1050px) {
+    .book-title {
+        max-width: 200px;
+    }
+    .book-title {
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-body {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .book-cover {
+        width: 70px;
+    }
+
+    .book-title {
+        font-size: 14px;
+        max-width: 200px;
+    }
+    .book-title {
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .upload-btn {
+        background-color: var(--primary-color);
+        color: white;
+      }
+    .delete-btn {
+        padding: 0.2rem 0.5rem;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-cover {
+        width: 50px;
+    }
+
+    .book-title {
+        font-size: 14px;
+        max-width: 140px;
+    }
+    .book-title {
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .card-arrow {
+        font-size: 18px;
+    }
+}

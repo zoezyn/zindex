@@ -10,9 +10,17 @@ export const SuccessPage = () => {
   const [loading, setLoading] = useState(true)
   // const [fileContent, setFileContent] = useState<string>('')
   const [userNotes, setUserNotes] = useState<any[]>([])  // Add this
+  const [selectedFile, setSelectedFile] = useState<File | null>(null)  // Add this line
   const navigate = useNavigate()
   const API_URL = import.meta.env.VITE_API_URL;
+  const [isUploading, setIsUploading] = useState(false);
 
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+    }
+  };
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -41,22 +49,21 @@ export const SuccessPage = () => {
 
 
 
+  const uploadFile = async () => {
+    console.log(selectedFile)
+    if (!selectedFile || !user) return;
+    
+    setIsUploading(true);
+    // const file = event.target.files?.[0]
+    // setSelectedFile(file || null)
+    try {
 
-  const uploadFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    // if (file&& user) {
-    //   const reader = new FileReader()
-    //   reader.onload = (e) => {
-    //     const text = e.target?.result as string
-    //     setFileContent(text)
-    //   }
-    if (file && user) {
         const reader = new FileReader()
         
         // Read file and Convert file to text first
         const text = await new Promise<string>((resolve) => {
           reader.onload = (e) => resolve(e.target?.result as string)
-          reader.readAsText(file)
+          reader.readAsText(selectedFile)
         })
 
         // 2. Process with Python backend
@@ -74,16 +81,7 @@ export const SuccessPage = () => {
 
 
         // 3. Save the file to the database
-        // Each book is a separate row
-        // const { data, error } = await supabase
-        //     .from('book_notes')
-        //     .insert({ 
-        //         user_id: user.id, 
-        //         raw: text,
-        //         file_name: file.name,
-        //         created_at: new Date().toISOString()
-        //     })
-        //     .select()
+
         for (const [bookTitle, notes] of Object.entries(processedData)) {
             console.log(bookTitle)
             // console.log(notes)
@@ -94,19 +92,23 @@ export const SuccessPage = () => {
                     book_title: bookTitle.trim(),
                     notes: notes,        // array of [note_content, note_location]
                     // location: (notes as [string, string])[1],
-                    file_name: file.name,
+                    file_name: selectedFile.name,
                     created_at: new Date().toISOString()
                 })
                 .select()
                 if (error) throw error
                 else fetchUserNotes(user.id)  // Refresh notes list
-                reader.readAsText(file)
+                // reader.readAsText(selectedFile)
         }
-
-
-
-    
-    }
+        // await fetchUserNotes(user.id);
+        setSelectedFile(null); // Clear selected file after successful upload
+        
+      } catch (error) {
+        console.error('Upload failed:', error);
+        alert('Failed to upload file. Please try again.');
+      } finally {
+        setIsUploading(false); // Set loading state to false when done
+      }
   }
 
   const deleteNote = async (noteId: string) => {
@@ -118,8 +120,33 @@ export const SuccessPage = () => {
     else if (user) fetchUserNotes(user.id)  // Refresh notes list
   }
 
+  // Add deleteAll function
+  const deleteAllNotes = async () => {
+    if (!user || userNotes.length === 0) return;
+    
+    // Add confirmation dialog
+    if (!window.confirm('Are you sure you want to delete all notes? This cannot be undone.')) {
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('book_notes')
+        .delete()
+        .eq('user_id', user.id);
+        
+      if (error) throw error;
+      
+      // Refresh notes list (will be empty)
+      await fetchUserNotes(user.id);
+    } catch (error) {
+      console.error('Error deleting all notes:', error);
+      alert('Failed to delete notes');
+    }
+  };
 
   return (
+    
     <div className="success-page">
       {loading ? (
         <h1>Loading...</h1>
@@ -129,40 +156,65 @@ export const SuccessPage = () => {
           {/* <p>Your Dashboard is ready!</p> */}
 
           {/* File upload section */}
-          <input className="file-input"
-            type="file" 
-            accept=".txt,.doc,.docx"
-            onChange={uploadFile}
-          />
-
-          {/* Sign out button */}
-          {/* <button onClick={signOut}>Sign Out</button> */}
-          
+          <div className="file-upload-container">
+            <input 
+              type="file"
+              accept=".txt,.doc,.docx"
+              onChange={handleFileSelect}
+              id="file-upload"
+              className="hidden-input"
+            />
+            <label htmlFor="file-upload" className="upload-btn">
+              {/* <i className="fas fa-cloud-upload-alt"></i>  */}
+              Choose File
+            </label>
+            {/* Optional: Display selected filename */}
+            {selectedFile ? <span className="file-name">{selectedFile.name}</span> : <span className="file-name">No file selected</span>}
+            
+            {selectedFile && (
+              <button 
+                onClick={uploadFile}
+                className="choose-file-btn" // inverse of upload-btn
+                disabled={isUploading}
+              >
+                {isUploading ? (
+                  <>
+                    <i className="fas fa-spinner fa-spin"></i> Processing...
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-cloud-upload-alt"></i> Upload
+                  </>
+                )}
+              </button>
+            )}
+          </div>
 
 
           {/* Show all saved notes */}
-          {/* <div>
-            <h2>Your Notes:</h2>
+          <div className="book-card-container">
+            {userNotes.length > 0 && (
+              <div className="actions-bar">
+                <button 
+                  className="delete-all-btn"
+                  onClick={deleteAllNotes}
+                >
+                  Delete All
+                </button>
+              </div>
+            )}
+            
             {userNotes.map((note) => (
               <div key={note.id} className="note-container">
-                <button onClick={() => deleteNote(note.id)}>Delete</button>
-                <h3>{note.book_title}</h3>
-                <pre>{note.notes}</pre>
-                
+                <div className="book-card">
+                  <BookCard book={note.book_title} />
+                </div>
+                <button className="delete-btn" onClick={() => deleteNote(note.id)}>
+                  Delete
+                </button>
               </div>
             ))}
-          </div> */}
-          <div className="book-card-container">
-            
-                        {userNotes.map((note) => (
-                            <div key={note.id} className="note-container">
-                              <div className="book-card">
-                                <BookCard book={note.book_title} />
-                              </div>
-                              <button onClick={() => deleteNote(note.id)}>Delete</button>
-                            </div>
-                        ))}
-                    </div>
+          </div>
 
 
           

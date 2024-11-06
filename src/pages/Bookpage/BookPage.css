@@ -8,8 +8,7 @@
 }
 
 .book-page button {
-    /* border: none; */
-    /* background: none; */
+    /* border: 1px solid #c0c0c0; */
     margin-left:auto;
 }
 
@@ -42,5 +41,15 @@
 @media (max-width: 768px) {
     .book-cover-container h2 {
         font-size: 1rem;
+    }
+    .text-container {
+        font-size: 14px;
+        line-height: 2;
+    }
+    .book-page button {
+        font-size: 12px;
+    }
+    .book-page {
+        padding: 1rem 4rem;
     }
 }

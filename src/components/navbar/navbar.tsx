@@ -31,7 +31,16 @@ export const Navbar: React.FC = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [user, setUser] = useState<any>(null);
   const navigate = useNavigate()
-
+  const scrollToFeature = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('how-it-works');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
   useEffect(() => {
     const fetchUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
@@ -59,17 +68,18 @@ export const Navbar: React.FC = () => {
         </div>
         <div className="navbar-links">
           <Link to="/">Home</Link>
-          <Link to="/how-it-works">How It Works</Link>
-          <Link to="/my-notes">My Notes</Link>
+          {/* <Link to="/how-it-works">How It Works</Link> */}
+          <a href="#how-it-works" onClick={scrollToFeature}>How It Works</a>
+          <Link to="/login">My Notes</Link>
         </div>
         <div className="navbar-buttons">
         {user ? (
           <button className="btn btn-secondary" onClick={signOut}>Sign Out</button>
         ) : (
           <>
-            <button className="btn btn-primary">Upload Your Notes</button>
-            <Link to="/login" className="btn btn-secondary">Log in</Link>
-            <Link to="/signup" className="btn btn-secondary">Sign up</Link>
+            {/* <button className="btn btn-primary">Upload Your Notes</button> */}
+            <Link to="/login" className="btn btn-primary">Log in</Link>
+            {/* <Link to="/login" className="btn btn-secondary">Sign up</Link> */}
           </>
         )}
         </div>
@@ -88,8 +98,8 @@ export const Navbar: React.FC = () => {
                 </div>
                 <div className="navbar-menu-container-buttons">
                   {/* <button className="btn btn-primary">Upload Your Notes</button> */}
-                  <button>Log in</button>
-                  <button>Sign up</button>
+                  <Link to="/login" className="btn btn-secondary">Log in</Link>
+                  {/* <button>Sign up</button> */}
                 </div>
               </div>
             )

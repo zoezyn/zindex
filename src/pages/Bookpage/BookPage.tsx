@@ -35,9 +35,9 @@ export function BookPage() {
         <div className="book-page">
             <button 
                 onClick={() => navigate(-1)}
-                className="mb-4"
+                className="btn btn-secondary"
             >
-                ← Back to Books
+                ← Back
             </button>
             
             {/* <div className="book-card-container" style={{border: '1px solid var(--background-color)', background: 'var(--background-color)'}}>
