@@ -93,8 +93,9 @@ export const Navbar: React.FC = () => {
               <div className="navbar-menu-container scale-up-center">
                 <div className="navbar-menu-container-links"> 
                   <Link to="/">Home</Link>
-                  <Link to="/how-it-works">How It Works</Link>
-                  <Link to="/my-notes">My Notes</Link>
+                  {/* <Link to="/how-it-works">How It Works</Link> */}
+                  {/* <a href="#how-it-works" onClick={scrollToFeature}>How It Works</a> */}
+                  <Link to="/login">My Notes</Link>
                 </div>
                 <div className="navbar-menu-container-buttons">
                   {/* <button className="btn btn-primary">Upload Your Notes</button> */}

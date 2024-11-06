@@ -1,6 +1,7 @@
 import React from 'react';
 import './feature.css';
 import { kindleImage, laptopImage, fileExplorerImage } from './imports';
+import { Link } from 'react-router-dom';
 export const Feature: React.FC = () => {
   return (
     <div className="feature">
@@ -25,8 +26,10 @@ export const Feature: React.FC = () => {
         <div className="step2-right">
           <p> • Step 2: Go to &lt;Kindle/documents/My Clippings.txt&gt; file and upload it to here</p>
           <div className="upload-section">
-            <button className="choose-file-btn">Choose File</button>
-            <button className="upload-btn">Upload</button>
+            {/* <button className="choose-file-btn">Choose File</button> */}
+            <Link to="/login" className="btn choose-file-btn feature">Choose File</Link>
+            {/* <Link to="/login" className="btn upload-btn">Upload</Link> */}
+            {/* <button className="upload-btn">Upload</button> */}
           </div>
         </div>
       </div>

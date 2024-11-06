@@ -39,20 +39,21 @@
   }
   
 .step1 {
-grid-row: 2;
-grid-column: 1 / -1;
-display: grid;
-grid-template-columns: 55% 45%;
+    grid-row: 2;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 55% 45%;
 
-padding: 2rem 6rem;
+    padding: 2rem 6rem;
 
-/* background-color: var(--primary-color); */
+    /* background-color: var(--primary-color); */
 }
 
 .step1 p {
     font-size: 22px;
     color: var(--text-color-white);
     padding-bottom: 2rem;
+    line-height: 1.5;
     /* padding: 2rem 6rem; */
 }
 
@@ -94,12 +95,6 @@ flex: 1;
 }
 
 
-
-
-
-
-
-
 .step2 {
     grid-row: 3;
     grid-column: 1 / -1;
@@ -138,6 +133,7 @@ flex: 1;
 .step2-right p {
     font-size: 22px;
     color: var(--text-color);
+    line-height: 1.5;
 }
 
 .step2-right .upload-section {
@@ -151,35 +147,11 @@ flex: 1;
     gap: 1rem;
     /* margin-top: 1rem; */
   }
-  
-.choose-file-btn, .upload-btn {
-padding: 0.5rem 1.5rem;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-font-size: 1rem;
-}
 
-.choose-file-btn {
-background-color: #f0f0f0;
-color: var(--text-color);
-/* text-align: left; */
-padding-left: 1rem;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Adds a subtle shadow */
-transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-
-}
-
-.upload-btn {
-background-color: var(--primary-color);
-color: white;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
-transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-
-}
-
-
-
+  .choose-file-btn {
+    background-color: #f0f0f0;
+    color: var(--text-color);
+  }
 .step3 {
     grid-row: 4;
     
@@ -188,9 +160,9 @@ transition: background-color 0.3s ease; /* Smooth transition for hover effect */
     padding: 2rem 6rem;
   }
 
-/* .step3 p {
-    padding: 2rem 6rem;
-} */
+.step3 p {
+    line-height: 1.5;
+}
 
 @media (max-width: 1050px) {
     .step1-left, .step2-left {
@@ -199,24 +171,31 @@ transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 @media (max-width: 750px) {
+    .feature::before {
+        display: none; /* Remove the pseudo-element background */
+      }
+  
     .feature {
       grid-template-columns: 1fr;
       background-color: var(--primary-color);
+      /* width: 100%; */
+      /* padding: 2rem 2rem 6rem 0; */
     }
   
-    .feature::before {
-      display: none; /* Remove the pseudo-element background */
-    }
 
     .step1, .step2 {
         display: flex;
         flex-direction: column;
         grid-template-columns: 1fr; /* Make nested grids single column */
+        
+        
+        /* padding: 2rem; */
     }
   
     .step1-left, .step1-right, .step2-left, .step2-right {
       grid-column: 1; /* Ensure all elements span the single column */
       padding: 1rem;
+      
     }
   
     .feature-title {
@@ -242,7 +221,7 @@ transition: background-color 0.3s ease; /* Smooth transition for hover effect */
   
     /* Adjust padding and margins as needed */
     .step1, .step2, .step3 {
-      padding: 1rem 4rem;
+      padding: 1rem 3rem;
       /* text-align: center; */
     }
   
@@ -265,7 +244,8 @@ transition: background-color 0.3s ease; /* Smooth transition for hover effect */
         padding: 0rem;
      }
      /* .file-explorer-image {
-        display: none;
+        max-width: 50px !important;
+        width: 100%;
   } */
   /* .file-explorer-image {
     width: 100%;
@@ -273,8 +253,23 @@ transition: background-color 0.3s ease; /* Smooth transition for hover effect */
     height: auto;
     margin: 1rem auto;
   } */
-  .upload-btn {
+  .choose-file-btn.feature {
     background-color: #f0f0f0;
     color: var(--text-color);
   }
+}
+
+@media (max-width: 450px) {
+    .step1 p, .step2 p, .step3 p {
+        padding: 1rem 1rem;
+        font-size: 20px;
+    }
+    .feature {
+        padding: 1rem 0rem;
+    }
+    .step2-left {
+        padding: 0rem;
+
+      }
+    
 }

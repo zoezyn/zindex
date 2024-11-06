@@ -61,8 +61,8 @@ border-radius: 10px;
 
 @media (max-width: 650px) {
     .header-content h1 {
-        font-size: 48px;
-        line-height: 60px;
+        font-size: 42px;
+        line-height: 55px;
     }
     .header-content p {
         font-size: 16px;

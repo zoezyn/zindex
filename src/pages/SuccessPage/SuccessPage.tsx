@@ -164,7 +164,7 @@ export const SuccessPage = () => {
               id="file-upload"
               className="hidden-input"
             />
-            <label htmlFor="file-upload" className="upload-btn">
+            <label htmlFor="file-upload" className="choose-file-btn">
               {/* <i className="fas fa-cloud-upload-alt"></i>  */}
               Choose File
             </label>
@@ -174,7 +174,7 @@ export const SuccessPage = () => {
             {selectedFile && (
               <button 
                 onClick={uploadFile}
-                className="choose-file-btn" // inverse of upload-btn
+                className="upload-btn" // inverse of upload-btn
                 disabled={isUploading}
               >
                 {isUploading ? (
