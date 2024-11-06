@@ -47,7 +47,6 @@
     cursor: pointer;
     font-size: 1rem;
     white-space: nowrap;         /* Prevent text wrapping */
-    max-width: 80px;            /* Optional: limit button width */
     /* text-align: center; */
     display: flex;
     justify-content: center;
@@ -151,6 +150,7 @@
 
     .choose-file-btn, .upload-btn, .delete-all-btn {
         font-size: 12px;
+        max-width: 80px; 
     }
 
   }
