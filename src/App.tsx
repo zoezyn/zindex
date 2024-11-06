@@ -1,25 +1,3 @@
-// import { useState } from 'react'
-// import './App.css'
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-// import { Main } from './pages/main'
-// import { Login } from './pages/login'
-// import { Navbar } from './components/navbar'
-// function App() {
-//   return (
-//     <div className="App">
-//       <Router>
-//         <Navbar />
-//         <Routes>
-//           <Route path="/" element={<Main />} />
-//           <Route path="/login" element={<Login />} />
-//         </Routes>
-//       </Router>
-//     </div>
-
-//   )
-// }
-
-// export default App
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import { Navbar } from './components/navbar/navbar';
