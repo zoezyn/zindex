@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabaseClient'
 import './BookPage.css'
 import bookCover from "/src/assets/book-cover.svg";
-import { User } from '@supabase/supabase-js';
 export function BookPage() {
     const { bookTitle } = useParams()
     // const decodedTitle = decodeURIComponent(bookTitle || '')
