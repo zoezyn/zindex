@@ -24,7 +24,7 @@ export const SuccessPage = () => {
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
-      console.log(user)
+      // console.log(user)
       setUser(user)
       if (user) fetchUserNotes(user.id) // Fetch notes after confirming user
       setLoading(false)

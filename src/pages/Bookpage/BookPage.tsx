@@ -3,22 +3,38 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabaseClient'
 import './BookPage.css'
 import bookCover from "/src/assets/book-cover.svg";
+import { User } from '@supabase/supabase-js';
 export function BookPage() {
     const { bookTitle } = useParams()
     // const decodedTitle = decodeURIComponent(bookTitle || '')
     const navigate = useNavigate()
     const [notes, setNotes] = useState<any[]>([])
+    const [user, setUser] = useState<User | null>(null)
+
+    // useEffect(() => {
+    //     fetchBookNotes(bookTitle || '')
+    // }, [bookTitle])
 
     useEffect(() => {
-        fetchBookNotes(bookTitle || '')
-    }, [bookTitle])
+        supabase.auth.getUser().then(({ data: { user } }) => {
+            console.log('user1', user)
+            setUser(user);
+            if (user) {
+                console.log('user3', user.id);
+            fetchBookNotes(user.id, decodeURIComponent(bookTitle as string));
+            }
+        }).catch(error => {
+            console.error('Error getting user:', error);
+        });
+        }, [bookTitle]);
 
-    const fetchBookNotes = async (bookTitle: string) => {
+    const fetchBookNotes = async (user_id: string, bookTitle: string) => {
         const { data, error } = await supabase
             .from('book_notes')
             .select('*')
             .ilike('book_title', bookTitle)
-            // .eq('user_id', "2df9c1e1-6d6e-4a4c-88d8-022f73cc6132")
+            .eq('user_id', user_id)
+            .order('created_at', { ascending: false });  // Get newest first
 
         // console.log('Fetched bookTitle:', decodedTitle)
         // console.log('Fetched data:', data)
