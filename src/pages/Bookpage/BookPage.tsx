@@ -9,7 +9,7 @@ export function BookPage() {
     // const decodedTitle = decodeURIComponent(bookTitle || '')
     const navigate = useNavigate()
     const [notes, setNotes] = useState<any[]>([])
-    const [user, setUser] = useState<User | null>(null)
+    // const [user, setUser] = useState<User | null>(null)
 
     // useEffect(() => {
     //     fetchBookNotes(bookTitle || '')
@@ -17,8 +17,7 @@ export function BookPage() {
 
     useEffect(() => {
         supabase.auth.getUser().then(({ data: { user } }) => {
-            console.log('user1', user)
-            setUser(user);
+
             if (user) {
                 console.log('user3', user.id);
             fetchBookNotes(user.id, decodeURIComponent(bookTitle as string));
