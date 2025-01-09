@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { User } from '@supabase/supabase-js'
 import BookCard from '../../components/bookcard/bookcard'
-
+import { Link } from 'react-router-dom';
 export const SuccessPage = () => {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
@@ -222,7 +222,8 @@ export const SuccessPage = () => {
       ) : (
         <>
           <h1>You are not logged in</h1>
-          <button onClick={() => navigate('/login')}>Login</button>
+          {/* <button onClick={() => navigate('/login')}>Login</button> */}
+          <Link to="/login" className="btn btn-primary">Log in</Link>
         </>
       )}
     </div>
