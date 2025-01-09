@@ -11,7 +11,6 @@ export const SuccessPage = () => {
   // const [fileContent, setFileContent] = useState<string>('')
   const [userNotes, setUserNotes] = useState<any[]>([])  // Add this
   const [selectedFile, setSelectedFile] = useState<File | null>(null)  // Add this line
-  const navigate = useNavigate()
   const API_URL = import.meta.env.VITE_API_URL;
   const [isUploading, setIsUploading] = useState(false);
 
