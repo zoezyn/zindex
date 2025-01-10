@@ -1,6 +1,5 @@
 import { supabase } from '../../lib/supabaseClient'
 import './SuccessPage.css'
-import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { User } from '@supabase/supabase-js'
 import BookCard from '../../components/bookcard/bookcard'
