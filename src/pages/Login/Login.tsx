@@ -54,7 +54,8 @@ export const Login = () => {
         view={view}
         redirectTo={
           view === 'forgotten_password'
-            ? `${window.location.origin}/reset-password`
+          // since the redirect link already has the reset-password path, we don't need to add it here
+            ? `${window.location.origin}`
             : `${window.location.origin}/success`
         }
       />
