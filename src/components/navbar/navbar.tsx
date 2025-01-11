@@ -5,28 +5,6 @@ import React, {useEffect,useState} from 'react'
 import { RiCloseLine, RiMenu3Line } from 'react-icons/ri';
 import { supabase } from '../../lib/supabaseClient';
 
-// import { supabase } from '../lib/supabaseClient';
-
-// export const Navbar: React.FC = () => {
-//   return (
-//     <nav className={styles.navbar}>
-//       <div className={styles.logoContainer}>
-//         <img src={logo} alt="Zindex Logo" className={styles.logo} />
-//         <span className={styles.brandName}>Zindex</span>
-//       </div>
-//       <ul className={styles.navLinks}>
-//         <li><Link to="/">Home</Link></li>
-//         <li><Link to="/how-it-works">How It Works</Link></li>
-//         <li><Link to="/my-notes">My Notes</Link></li>
-//       </ul>
-//       <div className={styles.actionButtons}>
-//         <button className={`${styles.actionButton} ${styles.uploadButton}`}>Upload Your Notes</button>
-//         <Link to="/login" className={styles.actionButton}>Log in</Link>
-//         <Link to="/signup" className={styles.actionButton}>Sign up</Link>
-//       </div>
-//     </nav>
-//   );
-// };
 export const Navbar: React.FC = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [user, setUser] = useState<any>(null);
@@ -48,6 +26,16 @@ export const Navbar: React.FC = () => {
     };
 
     fetchUser();
+
+  // Listen for auth state changes
+  const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    setUser(session?.user ?? null);
+  });
+
+  // Cleanup subscription
+  return () => {
+    subscription.unsubscribe();
+  };
   }, []);
 
   // const signOut = async () => {

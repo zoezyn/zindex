@@ -8,7 +8,7 @@ import './App.css'
 import { Login } from './pages/Login/Login';  
 import { SuccessPage } from './pages/SuccessPage/SuccessPage';
 import { BookPage } from './pages/Bookpage/BookPage'
-
+import { ResetPassword } from './pages/ResetPassword/ResetPassword';
 const App: React.FC = () => {
   return (
     <BrowserRouter>
@@ -19,6 +19,7 @@ const App: React.FC = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/success" element={<SuccessPage />} />
           <Route path="/book/:bookTitle" element={<BookPage />} />  {/* Add this line */}
+          <Route path="/reset-password" element={<ResetPassword />} />
           {/* Add more routes here as needed */}
         </Routes>
         

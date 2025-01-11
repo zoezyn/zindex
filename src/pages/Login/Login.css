@@ -3,3 +3,21 @@
     margin: 40px auto;
     padding: 20px;
   }
+
+.extra-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #7f8183;
+  font-size: 14px;
+}
+
