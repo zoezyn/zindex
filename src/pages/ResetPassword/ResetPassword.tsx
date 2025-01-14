@@ -23,7 +23,7 @@ export const ResetPassword = () => {
   useEffect(() => {
     // Listen for password update event
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
-    //   console.log('Auth event:', event); // For debugging
+    //   console.log('Auth event:', event), For debugging
       
       if (event === 'USER_UPDATED') {
         alert('Password updated successfully!');
