@@ -154,21 +154,68 @@ flex: 1;
   }
 .step3 {
     grid-row: 4;
-    
+    grid-column: 1 / -1;
+    display: grid;
     font-size: 22px;
     color: var(--text-color-white);
     padding: 2rem 6rem;
+    grid-template-columns: 55% 45%;
   }
 
-.step3 p {
+/* .step3 p {
     line-height: 1.5;
+} */
+
+.step3-left {
+    grid-column: 1;
+    grid-row: 4;
+    flex: 1;
 }
 
+.step3-left a {
+    display: flex;
+    justify-content: center;
+    /* width: 80%;
+    margin: 1rem 1rem;
+    background-color: var(--secondary-color); */
+}
+
+.step3-left a img {
+    /* display: flex; */
+    width: 100%;
+    max-width: 150px;
+    margin: 2rem 1rem;
+    /* justify-content: flex-end; */
+}
+
+.step3-right {
+    display: flex;
+    grid-column: 2;
+    grid-row: 4;
+    flex: 1;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    /* width: 50%; */
+}
+
+.step3-right img {
+    width: 100%;
+    max-width: 150px; 
+    margin: 0rem 1rem;
+    padding: 0rem;
+}
 @media (max-width: 1050px) {
     .step1-left, .step2-left {
         padding: 2rem 4rem;
     }
+    .step3-right img {
+        width: 80%;
+        max-width: 100px;
+        margin: 0rem 0.5rem;
+    }
 }
+
 
 @media (max-width: 750px) {
     .feature::before {
@@ -183,7 +230,7 @@ flex: 1;
     }
   
 
-    .step1, .step2 {
+    .step1, .step2, .step3 {
         display: flex;
         flex-direction: column;
         grid-template-columns: 1fr; /* Make nested grids single column */
@@ -192,7 +239,7 @@ flex: 1;
         /* padding: 2rem; */
     }
   
-    .step1-left, .step1-right, .step2-left, .step2-right {
+    .step1-left, .step1-right, .step2-left, .step2-right, .step3-left, .step3-right {
       grid-column: 1; /* Ensure all elements span the single column */
       padding: 1rem;
       
@@ -218,7 +265,16 @@ flex: 1;
       padding: 1rem 0rem;
       order: 1;
     }
-  
+
+    /* .step3-right img {
+        width: 50%;
+        max-width: 80px;
+    }
+    .mobile-image {
+        width: 10%;
+        max-width: 10px;
+    }
+   */
     /* Adjust padding and margins as needed */
     .step1, .step2, .step3 {
       padding: 1rem 3rem;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './feature.css';
-import { kindleImage, laptopImage, fileExplorerImage } from './imports';
+import { kindleImage, laptopImage, fileExplorerImage, mobileImage1, mobileImage2, appStoreImage } from './imports';
 import { Link } from 'react-router-dom';
 export const Feature: React.FC = () => {
   return (
@@ -34,7 +34,18 @@ export const Feature: React.FC = () => {
         </div>
       </div>
       <div className="step3">
-        <p> • Step 3: Now you can browse, organize, and interact with your notes on mobile devices</p>
+
+        <div className="step3-left">
+          <p> • Step 3: Now you can browse, organize, and interact with your notes on mobile devices</p>
+          {/* <p> https://apps.apple.com/de/app/zindex/id6739007075</p> */}
+          <a href="https://apps.apple.com/de/app/zindex/id6739007075" target="_blank" rel="noopener noreferrer">
+            <img src={appStoreImage} alt="Download on App Store" className="app-store-image" />
+          </a>
+        </div>
+        <div className="step3-right">
+          <img src={mobileImage1} alt="Mobile" className="mobile-image" />
+          <img src={mobileImage2} alt="Mobile" className="mobile-image" />
+        </div>
       </div>
     </div>
   );
